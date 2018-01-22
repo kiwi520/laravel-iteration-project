@@ -34,6 +34,17 @@ Route::prefix('Admin')->group(function () {
 
 Route::prefix('front')->group(function () {
     Route::namespace('Front')->group(function () {
+        Route::get('/reg','RegisterController@index');  //用户登陆
+        Route::post('/reg','RegisterController@register');  //用户登陆
+
+        Route::get('/login','LoginController@index');  //用户登陆
+        Route::post('/login','LoginController@login');  //用户登陆
+
+        Route::post('/logout','LoginController@logout');  //用户退出
+
+        Route::get('/user/setting','UserController@setting');  //用户个人中心设置
+        Route::post('/user/setting','UserController@setStore');  //用户个人中心设置
+
         // Controllers Within The "App\Http\Controllers\Admin" Namespace
         Route::prefix('index')->group(function () {
             Route::get('/list','IndexController@index');  //文章列表
